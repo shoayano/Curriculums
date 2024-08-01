@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<link rel="stylesheet" th:href="@{/css/student.css}">
+	<script th:src="@{/js/logInOut.js}"></script>
+	<script th:src="@{/js/student.js}"></script>
+	<title>生徒詳細</title>
+</head>
+<body>
+	<div class="replace" th:replace="~{/header :: header_fragment}"></div>
+	
+	<div class="outer_wrapper">
+		<div class="info_bar" th:object="${student}">
+			<div class="info">
+				<h4 class="page_title">&lt コース一覧 &gt</h4>
+			</div>
+			<div class="info" th:if="${loginUser.teacherFlg}">
+				<pre>生徒  : </pre>
+				<pre th:text="|*{property.name}  *{lastName} *{firstName}|" class="student_name"></pre>
+			</div>
+		</div>
+		
+		<div hidden=true>
+			<div th:each="startMonth : ${startList}" th:text="${startMonth}" class="startMonth"></div>
+		</div>
+		
+		<div class="flex_container">
+			<div class="courseList_container">
+				<ul id="courseList">
+					<li class="start_month">&lt 開始月 &gt</li>
+					<li th:each="course : ${courseList}" th:object="${course}" class="li_course">
+						<div hidden=true th:text="*{startMonth}"></div>
+						<div class="nav_button course_button">
+							<a class="button_item course_item" th:href="@{/{courseId}/curriculum(courseId=*{courseId})}">
+								<span class="course_name" th:text="*{name}"></span>
+								<span th:text="|: *{subject.name}|"></span>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			<div th:if="${loginUser.teacherFlg}" class="makeCourse_container">
+				<h4 class="page_title">&lt コース作成 &gt</h4>
+				<form th:action="@{/makeCourse}" method="post">
+					<input type="hidden" name="studentId" th:value="${student.userId}">
+					<input type="hidden" name="editor" th:value="${loginUser.lastName}">
+					<input type="text" name="name" required="required" placeholder="コース名"><br>
+					<div class="select_container">
+						<p>科目選択</p>
+						<select name="subjectId">
+							<option th:each="subject : ${subjectList}" th:value="${subject.subjectId}" th:text="${subject.name}"></option>
+						</select>
+					</div>
+					<div class="select_container">
+						<p>開始月</p>
+						<input type="month" name="startMonth" required="required">
+					</div>
+					<input class="nav_button" type="submit" value="作成">
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

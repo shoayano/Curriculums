@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<link rel="stylesheet" th:href="@{/css/curriculum.css}">
+	<script th:src="@{/js/logInOut.js}"></script>
+	<script src="/js/curriculumEdit.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+	<title>カリキュラム編集</title>
+</head>
+<body>
+	<div class="replace" th:replace="~{/header :: header_fragment}"></div>
+
+	<div class="flex_wrapper">
+		<div class="selectText_container">
+			<select onchange="selectText(event)">
+				<option value="0">テキスト選択</option>
+				<option th:each="textbook : ${textbookList}" th:id="|select#${textbook.textbookId}|" th:value="${textbook.textbookId}" th:text="${textbook.name}"></option>
+			</select>
+			<table id="unit_table">
+				<thead>
+					<tr>
+						<th>単元名</th>
+						<th>ページ</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	
+		<div class="main_container">
+			<div class="info_bar" th:object="${course}">
+				<div class="info">
+					<h4 class="page_title">&lt カリキュラム編集 &gt</h4>
+				</div>
+				<div th:if="${loginUser.teacherFlg}" th:object="${course.user}" class="info">
+					<pre>生徒           : </pre>
+					<pre><a th:href="@{/student/{id}(id=*{userId})}" th:text="|*{property.name}  *{lastName} *{firstName}|"></a></pre>
+				</div>
+				<div class="info">
+					<pre>コース（科目） : </pre>
+					<pre th:text="|*{name}（*{subject.name}）|"></pre>
+				</div>
+				<div class="info">
+					<pre>開始月         : </pre>
+					<pre th:text="|*{startMonth}|"></pre>
+				</div>
+				<div class="info">
+					<pre>最終更新       : </pre>
+					<pre th:text="|*{editDate}  *{editor}|"></pre>
+				</div>
+			</div>
+
+			<div class="form_nav">
+				<button class="nav_button" id="newCurriculum" onclick="newCurriculum()">追加</button>
+				<input class="nav_button" type="submit" form="curriculumForm" th:value="${#arrays.isEmpty(cList)} ? '登録' : '更新'">
+			</div>
+			
+			<form id="curriculumForm" class="curriculum_form" th:action="@{/{courseId}/curriculum/update(courseId=${course.courseId})}" th:method="post" th:object="${cListModel}">
+			<table>
+				<thead>
+					<tr>
+						<th class="th_main"></th>
+						<th class="th_main">単元名</th>
+						<th class="th_main">テキスト</th>
+						<th class="th_main">ページ</th>
+						<th class="th_main">チェック</th>
+						<th class="th_main">テスト</th>
+						<th class="th_main">削除</th>
+					</tr>
+				</thead>
+				<tbody id="curriculum_tbody">
+				<th:block th:each="curriculum, st : ${cList}" th:object="${curriculum}">
+					<tr th:id="|tr#*{curriculumId}|" class="tr_sortable">
+						<td class="mark">&#xFE19</td>
+						<td>
+							<input type="hidden" th:id="|id#*{curriculumId}|" th:value="*{curriculumId}">
+							<input type="hidden" th:id="|orderNum#*{curriculumId}|" th:value="*{orderNum}" class="orderNum">
+							<input th:type="*{textbookId} ? 'hidden' : 'text'" th:id="|name#*{curriculumId}|" th:value="*{name}" th:text="*{textbookId} ? *{name}">
+						</td>
+						<td>
+							<input th:type="hidden" th:id="|textId#*{curriculumId}|" th:value="*{textbookId}">
+							<input th:type="*{textbookId} ? 'hidden' : 'text'" th:id="|textName#*{curriculumId}|" th:value="*{textbookName}" th:text="*{textbookId} ? *{textbookName}">
+						</td>
+						<td>
+							<input th:type="*{textbookId} ? 'hidden' : 'number'" th:id="|page#*{curriculumId}|" th:value="*{page}" th:text="*{textbookId} ? 'p. ' + *{page} + '~'">
+						</td>
+						<td>
+							<div th:text="*{status.name}"></div>
+						</td>
+						<td>
+							<div th:text="*{score}"></div>
+						</td>
+						<td>
+							<div class="nav_button delete_button">
+								<a class="button_item" href="#" th:id="|delete#*{curriculumId}|" onclick="onDelete(event)">x</a>
+							</div>
+						</td>
+					</tr>
+				</th:block>
+				</tbody>
+			</table>
+			
+			<div id="deleteIdList" hidden=true>
+			</div>
+			
+			</form>
+		</div>
+	
+	</div>
+</body>
+</html>

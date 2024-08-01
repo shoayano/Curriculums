@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/login.css}">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<script th:src="@{/js/logInOut.js}"></script>
+	<title>ユーザー登録</title>
+</head>
+<body>
+	<div class="replace" th:replace="~{/header :: header_fragment}"></div>
+
+	<div class="login_wrapper">
+		<div class="form registration_form">
+			<p class="login_title">ユーザー登録</p>
+			<div th:if="${error}">メールアドレスが登録済みです</div>
+			<form th:action="@{/registerUser}" method="post" th:object="${user}">
+				<input type="text" name="lastName" required="required" placeholder="姓" th:value="*{lastName}"><br>
+				<input type="text" name="firstName" required="required" placeholder="名" th:value="*{firstName}"><br>
+				<input type="email" name="email" required="required" placeholder="Email Address" th:value="*{email}"><br>
+				<input type="password" name="password" required="required" placeholder="Password"><br>
+				<div class="select_container">
+					<p>学年選択</p>
+					<select name="propertyId">
+						<option th:each="property : ${propertyList}" th:value="${property.propertyId}" th:text="${property.name}" th:selected="(${propertyId} == ${property.propertyId}) ? 'selected'"></option>
+					</select>
+				</div>
+				<button>登録</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

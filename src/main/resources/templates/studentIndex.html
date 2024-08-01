@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/common.css}">
+	<link rel="stylesheet" th:href="@{/css/student.css}">
+	<script th:src="@{/js/logInOut.js}"></script>
+	<title>生徒一覧</title>
+</head>
+<body>
+	<div class="replace" th:replace="~{/header :: header_fragment}"></div>
+	
+	<div class="outer_wrapper">
+		<div class="info_bar">
+			<div class="info">
+				<h4 class="page_title">&lt 生徒一覧 &gt</h4>
+			</div>
+		</div>
+
+		<ul class="property_list">
+			<li th:each="i : ${#numbers.sequence(0,5)}">
+				<h4 class="page_title property_name" th:text="|< ${studentsProperty[i].name} >|"></h4>
+				<ul>
+					<li th:each="student : ${studentsGroup[i]}" th:object="${student}">
+						<div class="nav_button student_button">
+							<a class="button_item student_item" th:href="@{/student/{id}(id=*{userId})}" th:text="|*{lastName} *{firstName}|"></a>
+						</div>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

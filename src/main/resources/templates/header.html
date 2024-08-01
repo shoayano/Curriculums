@@ -1,0 +1,24 @@
+<header class="header" th:fragment="header_fragment" th:object="${loginUser}">
+	<div class="nav_bar">
+		<div class="nav">
+			<a class="header_link" href="/routing" th:text="*{teacherFlg} ? '生徒一覧' : 'マイページ'"></a>
+		</div>
+		<div class="nav">
+			<a class="header_link" href="#">テキスト一覧</a>
+		</div>
+		<div th:if="*{property.name} == '管理者'" class="nav">
+			<a class="header_link" href="/registration">ユーザー登録</a>
+		</div>
+		<div class="nav">
+			<form name="logoutform" th:action="@{/logout}" method="post">
+				<a class="header_link" href="#" onclick="logout()">ログアウト</a>
+			</form>
+		</div>
+	</div>
+	<div class="login_info">
+		<p>
+			<span th:text="*{property.name}"></span>
+			<span class="login_name" th:text="|*{lastName} *{firstName}|"></span>
+		</p>
+	</div>
+</header>

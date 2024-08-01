@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+}
+ul, li {
+	list-style: none;
+	padding: 0;
+}
+
+/* 
+///////////////////////////////
+header
+ */
+header {
+	height: 40px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 2px solid lightgray;
+	overflow: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+header::-webkit-scrollbar {
+	display: none;
+}
+
+.nav_bar {
+	display: flex;
+	align-items: center;
+}
+
+.nav {
+	width: 120px;
+	background-color: #d2e6e2;
+}
+
+.header_link {
+	display: block;
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	border-top: 2px solid lightgray;
+	border-right: 2px solid lightgray;
+	padding: 7px 0;
+}
+
+.header_link:hover, .header_link:focus {
+	background-color: #98c7bc;
+}
+
+.login_info{
+	min-width: 200px;
+	margin-left: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.login_name{
+	font-size: 1.3rem;
+}
+
+/* 
+/////////////////////////////////////////////
+ */
+.select_container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	padding: 0 20px;
+}
+
+.select_container p {
+	font-size: 18px;
+}
+
+.select_container select {
+	height: 40px;
+	width: 40%;
+	min-width: 80px;
+}
+
+/*
+///////////////////////////////////////
+*/
+.outer_wrapper{
+	width: 100%;
+	min-height: 100vh;
+	min-width: 700px;
+	padding-top: 40px;
+	background-color: #f4f5f7;
+}
+
+.info_bar{
+	border-top: 2px solid #748ca5;
+	border-bottom: 2px solid #748ca5;
+	margin: 10px auto;
+	padding: 5px 10px;
+}
+
+.info {
+	display: flex;
+	margin: 5px auto;
+	padding-left: 10px;
+}
+
+.page_title {
+	color: #494949;
+}
+
+pre {
+	font-size: 17px;
+	font-weight: 200;
+}
+
+pre a{
+	color: #05adb7;	
+	display: block;
+	text-decoration: none;
+	transition: .3s;
+	font-size: 18px;
+}
+
+pre a:hover{
+	color: orange;
+}
+
+.nav_button {
+	width: 70px;
+	background-color: #d2e6e2;
+	border: 1px solid gray;
+	border-radius: 5px;
+}
+
+.button_item {
+	display: block;
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	padding: 3px 0;
+}
+
+.button_item:hover, .button_item:focus, .nav_button:hover, .nav_button:focus {
+	background-color: #98c7bc;
+	cursor: pointer;
+}
+

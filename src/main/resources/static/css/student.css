@@ -1,0 +1,113 @@
+.student_name {
+	font-size: 18px;
+	color: #6e6e6e;
+}
+
+.flex_container {
+	display: flex;
+	justify-content: center;
+}
+
+.courseList_container {
+	display: block;
+	min-width: 350px;
+}
+
+#courseList {
+	margin: 10px 20px;
+}
+
+.course_button {
+	width: 300px;
+	margin: 0 20px 5px;
+}
+
+.course_item {
+	border-left: 10px solid gray;
+	display: flex;
+	justify-content: space-between;
+	font-size: 17px;
+	padding: 5px 10px;
+}
+
+.course_name {
+	display: block;
+	max-width: 200px;
+	overflow-wrap: break-word;
+}
+
+.makeCourse_container {
+	width: 350px;
+	border-left: 8px double #748ca5;
+	padding: 10px 30px;
+}
+
+.makeCourse_container form {
+	margin-top: 20px;
+}
+
+.makeCourse_container input {
+	outline: 0;
+	height: 35px;
+	width: 100%;
+	margin: 0 0 15px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+input[type="month"] {
+	width: 50%;
+}
+
+/* 
+////////////////////////////////////////////////
+ */
+ .property_list {
+ 	display: flex;
+ 	flex-wrap: wrap;
+ }
+ 
+ .property_list>li {
+	display: block;
+	box-sizing: border-box;
+	width: calc(100% / 3);
+	border: 1px solid #748ca5;
+	border-radius: 5px;
+}
+
+.property_name {
+	padding: 3px;
+	margin-bottom: 5px;
+	background-color: #e1e4ea;
+}
+
+.student_button {
+	height: 35px;
+	width: calc( 100% - 32px );
+	border-left: 10px solid gray;
+	margin: 5px 10px;
+}
+
+.student_item {
+	text-align: left;
+	margin: 3px 8px;
+}
+
+
+/* 
+////////////////////////////////////////responsive
+ */
+@media screen and (max-width: 500px) {
+	.flex_container {
+		justify-content: left;
+	}
+
+	.property_list {
+		width: calc( 100vw - 10px );
+		min-width: 400px;
+	}
+	.property_list>li {
+		width: calc(100% / 2);
+	}
+}
+

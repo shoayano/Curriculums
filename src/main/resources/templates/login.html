@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" th:href="@{/css/login.css}">
+		<script src="/js/logInOut.js"></script>
+		<title>ログイン</title>
+	</head>
+	<body>
+		<div class="login_wrapper">
+			<div class="form">
+				<p class="login_title">ログイン</p>
+				<div th:if="${param.error}">メールアドレスかパスワードが違います</div>
+				<form th:action="@{/login}" method="post">
+						<input type="email" name="username" placeholder="Email Address"/>
+						<input type="password" name="password" placeholder="Password"/>
+						<button>ログイン</button>
+				</form>
+				<p class="form-footer">
+					<a href="#" onclick="updatePass(event)">パスワード変更</a>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
