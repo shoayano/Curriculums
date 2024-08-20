@@ -37,7 +37,7 @@ public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler {
 			userRepo.save(user);
 		}
 		
-		response.sendRedirect("/routing");
+		response.sendRedirect("/curriculums/routing");
 	}
 
 }

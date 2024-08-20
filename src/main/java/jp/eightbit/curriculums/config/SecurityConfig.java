@@ -24,7 +24,7 @@ public class SecurityConfig {
 		http.formLogin(login -> login
 				.loginProcessingUrl("/login")
 				.loginPage("/login")
-				.defaultSuccessUrl("/routing", true)
+				.defaultSuccessUrl("/routing")
 				.failureUrl("/login?error")
 				.successHandler(customAuthSuccessHandler)
 				.permitAll()

@@ -10,7 +10,6 @@ function selectStatus(curriculumId, statusId, event){
 	event.target.parentElement.setAttribute('hidden', true);
 	const statusSelect = event.target.parentElement.nextElementSibling;
 	statusSelect.removeAttribute('hidden');
-	statusSelect.children[statusId - 1].setAttribute("selected", true);
 
 	if(statusSelect.name == '') {
 		statusSelect.name = `cCheckList[${sendIndex}].status`;

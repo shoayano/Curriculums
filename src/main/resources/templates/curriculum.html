@@ -6,7 +6,7 @@
 	<link rel="stylesheet" th:href="@{/css/common.css}">
 	<link rel="stylesheet" th:href="@{/css/curriculum.css}">
 	<script th:src="@{/js/logInOut.js}"></script>
-	<script src="/js/curriculumCheck.js"></script>
+	<script th:src="@{/js/curriculumCheck.js}"></script>
 	<title>カリキュラム</title>
 </head>
 <body>
@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		
-		<form id="checkForm" th:action="@{/{courseId}/curriculum/check(courseId=${course.courseId})}" th:method="post" th:object="${cCheckListModel}">
+		<form id="checkForm" th:action="@{/{courseId}/curriculum/check(courseId=${course.courseId})}" method="post" th:object="${cCheckListModel}">
 		<table>
 			<thead>
 				<tr>
@@ -72,7 +72,7 @@
 							<a class="button_item" href="#" th:text="*{status.name}" th:onclick="|selectStatus(*{curriculumId}, *{status.statusId}, event)|"></a>
 						</div>
 	 					<select th:id="|status#*{curriculumId}|" hidden=true class="status_select">
-							<option th:each="status : ${statusList}" th:value="${status.statusId}" th:text="${status.name}"></option>
+							<option th:each="status : ${statusList}" th:value="${status.statusId}" th:text="${status.name}" th:selected="${status.statusId}==*{status.statusId} ? true : false"></option>
 						</select>
 					</td>
 					<td>
