@@ -126,7 +126,7 @@ function selectText(event){
 		}
 	}
 	
-	request.open('GET', 'http://192.168.100.60/curriculums/unit/json?textbookId=' + textbookId, true);
+	request.open('GET', 'http://localhost:8080/unit/json?textbookId=' + textbookId, true);
 	request.send(null);
 }
 
