@@ -2,15 +2,20 @@
 
 ## 概要
 学習塾において生徒ごとにカリキュラムを作成し、学習を管理するためのWebアプリケーションです。<br>
-塾で扱うテキストをベースに、カリキュラムの作成/編集、学習の管理を行います。<br>
+先生ユーザーは、塾で扱うテキストをベースに各生徒のカリキュラムの作成/編集、学習の管理を行うことができます。<br>
+生徒ユーザーは、自身のカリキュラムを閲覧、学習の管理を行うことができます。<br>
 <br>
 
 ## 機能一覧
 
 | ログイン/ログアウト | パスワード変更機能 |
 |---------------|----------------|
-|![loginout](https://github.com/user-attachments/assets/a6f43e9d-d1ed-4e18-aa83-173955db419e)|![newPass]()|
+| ![loginout](https://github.com/user-attachments/assets/4385d7a8-1180-48db-a881-da0ead3e7c58) | ![newPass](https://github.com/user-attachments/assets/33453fad-f374-4852-a921-d2b128ba586c) |
+| メールアドレスとパスワードでログイン、ログアウトができます。 | ログイン時にパスワードを変更することができます。 |
 
-
+| ユーザー登録機能 | コース登録機能 |
+|---------------|----------------|
+| ![addUser](https://github.com/user-attachments/assets/836051e9-e116-4ed5-9999-501dafe61a88) | ![addCourse](https://github.com/user-attachments/assets/79f39412-91fb-4871-aeb5-11dff88d907e) |
+| 管理者ユーザーであれば、他のユーザーを登録することができます。 | 先生/管理者ユーザーであれば、生徒ユーザーにコースを登録することができます。|
 
 
