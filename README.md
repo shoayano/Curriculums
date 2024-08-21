@@ -7,6 +7,7 @@
 <br>
 <br>
 
+
 ## 機能一覧
 
 ### ユーザー関連機能
@@ -19,6 +20,7 @@
 |---------------|----------------|
 | ![addUser](https://github.com/user-attachments/assets/836051e9-e116-4ed5-9999-501dafe61a88) | ![addCourse](https://github.com/user-attachments/assets/79f39412-91fb-4871-aeb5-11dff88d907e) |
 | 管理者ユーザーであれば、他のユーザーを登録することができます。 | 先生/管理者ユーザーであれば、生徒ユーザーにコースを登録することができます。|
+
 <br>
 
 ### カリキュラム作成/編集機能
@@ -31,10 +33,22 @@
 
 | 編集機能  | 並べ替え機能 |
 |---------------|----------------|
-| ![editCurriculum](https://github.com/user-attachments/assets/4afe5f1e-5e3d-4ffa-8fb7-d880a602e337) | ![sortable](https://github.com/user-attachments/assets/5c5fdbb7-4f77-45e1-8a91-b0589bd4c20e) |
+| ![editCurriculum](https://github.com/user-attachments/assets/4afe5f1e-5e3d-4ffa-8fb7-d880a602e337) | ![sortable](https://github.com/user-attachments/assets/50c9807b-bef1-4a0d-884e-ede54408a7fb) |
 | テキストボックスからカリキュラム内容を編集できます。 | ドラッグ＆ドロップによりカリキュラムの順番を並べ替えることができます。 |
 
+| 削除機能  |
+|---------------|
+| ![delete](https://github.com/user-attachments/assets/de6c9db4-54a4-48bb-87cf-56b8c6bc9d62) |
+| 単元を削除できます。 |
 
+<br>
+
+### 学習管理機能
+カリキュラムの理解度チェックと小テスト結果を登録できます。
+| 先生/管理者ユーザー側 | 生徒ユーザー側 |
+|---------------|---------------|
+| ![check1](https://github.com/user-attachments/assets/7a8e1d1a-573c-40fc-b8af-2e18eba59106) | ![check2](https://github.com/user-attachments/assets/526a5942-2249-4e63-bdab-b277b45d19d6) |
+| 各生徒ユーザーに対して登録できます。 | 自身のカリキュラムに対して登録できます。 |
 
 
 
